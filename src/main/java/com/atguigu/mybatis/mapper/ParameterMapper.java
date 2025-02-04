@@ -1,6 +1,7 @@
 package com.atguigu.mybatis.mapper;
 
 import com.atguigu.mybatis.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -31,4 +32,10 @@ public interface ParameterMapper {
      * 添加用户信息
      */
     int insertUser(User user);
+
+    /**
+     * 验证登录(使用@Param注解)
+     */
+    User checkLoginByParam(@Param("username") String username, @Param("password") String password);
+
 }
