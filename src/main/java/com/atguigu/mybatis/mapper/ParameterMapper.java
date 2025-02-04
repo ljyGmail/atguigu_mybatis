@@ -11,4 +11,8 @@ public interface ParameterMapper {
      */
     List<User> getAllUsers();
 
+    /**
+     * 根据用户名查询用户信息
+     */
+    User getUserByUsername(String username);
 }

@@ -14,6 +14,9 @@ public class B_ParameterMapperTest {
      * MyBatis获取参数值的两种方式: ${}和#{}
      * ${}: 本质是字符串拼接
      * #{}: 本质是占位符赋值
+     * MyBatis获取参数值的各种情况:
+     * 1. mapper接口方法的参数为单个的字面量类型
+     * 可以通过${}和#{}以任意的名称来获取参数值，但是需要注意${}的单引号问题
      */
 
     @Test
@@ -35,4 +38,12 @@ public class B_ParameterMapperTest {
         ps.setString(1, username);
     }
     */
+
+    @Test
+    public void testGetUserByUsername() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        ParameterMapper mapper = sqlSession.getMapper(ParameterMapper.class);
+        User user = mapper.getUserByUsername("admin");
+        System.out.println(user);
+    }
 }
