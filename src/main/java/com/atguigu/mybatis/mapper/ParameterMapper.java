@@ -15,4 +15,9 @@ public interface ParameterMapper {
      * 根据用户名查询用户信息
      */
     User getUserByUsername(String username);
+
+    /**
+     * 验证登录
+     */
+    User checkLogin(String username, String password);
 }
