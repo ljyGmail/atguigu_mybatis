@@ -12,6 +12,11 @@ import java.io.InputStream;
 
 public class MyBatisTest {
 
+    /**
+     * SqlSession默认不自动提交事务，若需要自动提交事务
+     * 可以使用SqlSessionFactory.openSession(true);
+     */
+
     @Test
     public void testMyBatis() throws IOException {
         // 加载核心配置文件
@@ -21,13 +26,13 @@ public class MyBatisTest {
         // 获取sqlSessionFactory
         SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(is);
         // 获取SqlSession
-        SqlSession sqlSession = sqlSessionFactory.openSession();
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
         // 获取mapper接口对象
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         // 测试功能
         int result = mapper.insertUser();
         // 提交事务
-        sqlSession.commit();
+        // sqlSession.commit();
         System.out.println("result:" + result);
     }
 }
