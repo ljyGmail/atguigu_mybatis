@@ -29,4 +29,10 @@
         from t_user
         where id = #{id}
     </select>
+
+    <!-- List<Map<String,Object>> getAllUsersToMap(); -->
+    <select id="getAllUsersToMap" resultType="map">
+        select *
+        from t_user
+    </select>
 </mapper>

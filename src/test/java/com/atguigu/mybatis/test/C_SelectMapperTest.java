@@ -16,7 +16,8 @@ public class C_SelectMapperTest {
      * 结果: {password=123456, sex=男, id=3, age=23, email=12345@qq.com, username=admin3}
      * 2. 若查询出的数据有多条
      * a> 可以通过list集合接收
-     * b>
+     * b> 可以通过map类型的list集合接收
+     * c> 可以在mapper接口的方法上添加MapKey注解，此时就可以将每条数据转换的map集合作为值，以某个字段的值作为键，放在同一个map集合中
      * 注意: 一定不能通过实体类对象接收，此时会抛异常: TooManyResultsException
      * <p>
      * MyBatis中设置了默认的类型别名
@@ -51,5 +52,12 @@ public class C_SelectMapperTest {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         SelectMapper mapper = sqlSession.getMapper(SelectMapper.class);
         System.out.println(mapper.getUserByIdToMap(3));
+    }
+
+    @Test
+    public void testGetAllUsersToMap() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        SelectMapper mapper = sqlSession.getMapper(SelectMapper.class);
+        System.out.println(mapper.getAllUsersToMap());
     }
 }
