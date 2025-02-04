@@ -16,4 +16,9 @@ public interface SelectMapper {
      * 查询所有的用户信息
      */
     List<User> getAllUsers();
+
+    /**
+     * 查询用户信息的总记录数
+     */
+    Integer getCount();
 }

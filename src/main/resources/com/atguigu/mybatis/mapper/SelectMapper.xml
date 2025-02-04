@@ -13,6 +13,13 @@
 
     <!-- List<User> getAllUsers(); -->
     <select id="getAllUsers" resultType="User">
-        select * from t_user
+        select *
+        from t_user
+    </select>
+
+    <!-- Integer getCount(); -->
+    <select id="getCount" resultType="_int">
+        select count(1)
+        from t_user
     </select>
 </mapper>

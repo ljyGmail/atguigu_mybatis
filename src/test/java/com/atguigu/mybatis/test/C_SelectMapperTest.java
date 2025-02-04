@@ -12,11 +12,17 @@ public class C_SelectMapperTest {
      * 1. 若查询出的数据只有一条
      * a> 可以通过实体类对象接收
      * b> 可以通过list集合接收
-     * c> 可以通过list集合接收
+     * c>
      * 2. 若查询出的数据有多条
      * a> 可以通过list集合接收
      * b>
      * 注意: 一定不能通过实体类对象接收，此时会抛异常: TooManyResultsException
+     *
+     * MyBatis中设置了默认的类型别名
+     * java.lang.Integer --> int, integer
+     * int --> _int, _integer
+     * Map --> map
+     * String --> string
      */
     @Test
     public void testGetUserById() {
@@ -30,5 +36,12 @@ public class C_SelectMapperTest {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         SelectMapper mapper = sqlSession.getMapper(SelectMapper.class);
         System.out.println(mapper.getAllUsers());
+    }
+
+    @Test
+    public void testGetCount() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        SelectMapper mapper = sqlSession.getMapper(SelectMapper.class);
+        System.out.println(mapper.getCount());
     }
 }
