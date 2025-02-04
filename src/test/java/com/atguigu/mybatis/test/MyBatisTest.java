@@ -46,19 +46,9 @@ public class MyBatisTest {
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         // mapper.updateUser();
         // mapper.deleteUser();
-        /*
-        User user = mapper.getUserById();
-        System.out.println(user);
-         */
+        // User user = mapper.getUserById();
+        // System.out.println(user);
         List<User> list = mapper.getAllUsers();
         list.forEach(System.out::println);
-    }
-
-    /**
-     * 删除用户信息
-     */
-    @Test
-    public void deleteUser() throws IOException {
-
     }
 }
