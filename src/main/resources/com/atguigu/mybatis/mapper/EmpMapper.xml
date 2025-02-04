@@ -6,7 +6,7 @@
 
     <!-- List<Emp> getAllEmps(); -->
     <select id="getAllEmps" resultType="Emp">
-        select eid, emp_name empName, age, sex, email
-        from t_emp
+        <!-- select eid, emp_name empName, age, sex, email from t_emp -->
+        select * from t_emp
     </select>
 </mapper>
