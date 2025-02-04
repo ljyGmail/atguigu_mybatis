@@ -26,4 +26,9 @@ public interface ParameterMapper {
      * 验证登录(参数为map)
      */
     User checkLoginByMap(Map<String, Object> map);
+
+    /**
+     * 添加用户信息
+     */
+    int insertUser(User user);
 }
