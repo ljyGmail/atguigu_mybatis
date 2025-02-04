@@ -6,7 +6,9 @@ import com.atguigu.mybatis.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class B_ParameterMapperTest {
 
@@ -21,6 +23,8 @@ public class B_ParameterMapperTest {
      * 此时MyBatis会将这些参数放在一个map集合中，以两种方式进行存储
      * a> 以arg0, arg1...为键，以参数为值
      * b> 以param1, param2...为键，以参数为值
+     * 因此只需要通过#{}和${}以键的方式访问值即可，但是需要注意${}的单引号问题
+     * 3. 若mapper接口方法的参数有多个时，可以手动将这些参数放在一个map中存储
      * 因此只需要通过#{}和${}以键的方式访问值即可，但是需要注意${}的单引号问题
      */
 
@@ -57,6 +61,17 @@ public class B_ParameterMapperTest {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         ParameterMapper mapper = sqlSession.getMapper(ParameterMapper.class);
         User user = mapper.checkLogin("admin", "123456");
+        System.out.println(user);
+    }
+
+    @Test
+    public void testCheckLoginByMap() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        ParameterMapper mapper = sqlSession.getMapper(ParameterMapper.class);
+        Map<String, Object> map = new HashMap<>();
+        map.put("username", "admin");
+        map.put("password", "123456");
+        User user = mapper.checkLoginByMap(map);
         System.out.println(user);
     }
 }
