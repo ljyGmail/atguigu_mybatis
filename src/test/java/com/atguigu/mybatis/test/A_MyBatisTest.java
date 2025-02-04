@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-public class MyBatisTest {
+public class A_MyBatisTest {
 
     /**
      * SqlSession默认不自动提交事务，若需要自动提交事务
