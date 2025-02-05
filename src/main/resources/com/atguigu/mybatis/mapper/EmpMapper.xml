@@ -96,4 +96,11 @@
         from t_emp
         where eid = #{eid}
     </select>
+
+    <!-- List<Emp> getDeptAndEmpsByStepTwo(@Param("did") Integer did); -->
+    <select id="getDeptAndEmpsByStepTwo" resultType="Emp">
+        select *
+        from t_emp
+        where did = #{did}
+    </select>
 </mapper>

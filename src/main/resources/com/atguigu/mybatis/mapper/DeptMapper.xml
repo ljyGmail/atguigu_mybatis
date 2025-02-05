@@ -34,4 +34,18 @@
                  left join t_emp on t_dept.did = t_emp.did
         where t_dept.did = #{did}
     </select>
+
+    <resultMap id="deptAndEmpsByStepOne" type="Dept">
+        <id property="did" column="did"/>
+        <result property="deptName" column="dept_name"/>
+        <collection property="emps" select="com.atguigu.mybatis.mapper.EmpMapper.getDeptAndEmpsByStepTwo" column="did"
+                    fetchType="eager"/>
+    </resultMap>
+
+    <!-- Dept getDeptAndEmpsByStepOne(@Param("did") Integer did); -->
+    <select id="getDeptAndEmpsByStepOne" resultMap="deptAndEmpsByStepOne">
+        select *
+        from t_dept
+        where did = #{did}
+    </select>
 </mapper>

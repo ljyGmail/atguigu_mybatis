@@ -30,7 +30,7 @@ public class E_ResultMapTest {
      * a> 级联属性赋值
      * b> association
      * c> 分步查询
-     *
+     * <p>
      * 处理一对多的映射关系
      * a> collection
      * b> 分步查询
@@ -68,5 +68,13 @@ public class E_ResultMapTest {
         DeptMapper mapper = sqlSession.getMapper(DeptMapper.class);
         Dept dept = mapper.getDeptAndEmps(1);
         System.out.println(dept);
+    }
+
+    @Test
+    public void testGetDeptAndEmpsByStep() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DeptMapper mapper = sqlSession.getMapper(DeptMapper.class);
+        Dept dept = mapper.getDeptAndEmpsByStepOne(1);
+        System.out.println(dept.getDeptName());
     }
 }
