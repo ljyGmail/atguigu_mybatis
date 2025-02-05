@@ -4,6 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.mybatis.mapper.DynamicSQLMapper">
 
+    <!-- int deleteMultipleByArray(@Param("eids") Integer[] id); -->
+    <delete id="deleteMultipleByArray">
+        delete from t_emp where
+        <foreach collection="eids" item="eid" separator="or">
+            eid = #{eid}
+        </foreach>
+        <!--
+        delete from t_emp where eid in
+        <foreach collection="eids" item="eid" separator="," open="(" close=")">
+            #{eid}
+        </foreach>
+        -->
+    </delete>
+
     <!-- List<Emp> getEmpsByChoose(Emp emp); -->
     <select id="getEmpsByChoose" resultType="Emp">
         select *

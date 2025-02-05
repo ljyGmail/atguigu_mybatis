@@ -23,6 +23,7 @@ public class F_DynamicSQLMapperTest {
      * 若标签中没有内容时，trim标签也没有任何效果
      * 4. choose, when, otherwise 相当于 if...else if...else
      * when至少要有一个，otherwise最多只能有一个
+     * 5. foreach
      */
 
     @Test
@@ -39,5 +40,13 @@ public class F_DynamicSQLMapperTest {
         DynamicSQLMapper mapper = sqlSession.getMapper(DynamicSQLMapper.class);
         List<Emp> list = mapper.getEmpsByChoose(new Emp(null, "", null, "", null));
         System.out.println(list);
+    }
+
+    @Test
+    public void testDeleteMultipleByArray() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DynamicSQLMapper mapper = sqlSession.getMapper(DynamicSQLMapper.class);
+        int result = mapper.deleteMultipleByArray(new Integer[]{9, 10, 11});
+        System.out.println(result);
     }
 }
