@@ -23,6 +23,9 @@ public class E_ResultMapTest {
      * <result property="sex" column="sex"/>
      * <result property="email" column="email"/>
      * </resultMap>
+     * <p>
+     * 处理多对一的映射关系:
+     * a> 级联属性赋值
      */
 
     @Test
@@ -31,5 +34,13 @@ public class E_ResultMapTest {
         EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
         List<Emp> list = mapper.getAllEmps();
         list.forEach(System.out::println);
+    }
+
+    @Test
+    public void testGetEmpAndDept() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
+        Emp emp = mapper.getEmpAndDept(1);
+        System.out.println(emp);
     }
 }
