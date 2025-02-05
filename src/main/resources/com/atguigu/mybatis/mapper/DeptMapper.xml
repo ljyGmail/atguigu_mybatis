@@ -2,4 +2,12 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.atguigu.mybatis.mapper.DeptMapper"></mapper>
+<mapper namespace="com.atguigu.mybatis.mapper.DeptMapper">
+
+    <!-- Dept getEmpAndDeptByStepTwo(@Param("did") Integer did); -->
+    <select id="getEmpAndDeptByStepTwo" resultType="Dept">
+        select *
+        from t_dept
+        where did = #{did}
+    </select>
+</mapper>
