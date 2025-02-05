@@ -21,13 +21,23 @@ public class F_DynamicSQLMapperTest {
      * prefix|suffix: 将trim标签中内容前面或后面添加指定内容
      * suffixOverrides|prefixOverrides: 将trim标签中内容前面或后面去掉指定内容
      * 若标签中没有内容时，trim标签也没有任何效果
+     * 4. choose, when, otherwise 相当于 if...else if...else
+     * when至少要有一个，otherwise最多只能有一个
      */
 
     @Test
     public void testGetEmpsByCondition() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         DynamicSQLMapper mapper = sqlSession.getMapper(DynamicSQLMapper.class);
-        List<Emp> list = mapper.getEmpsByCondition(new Emp(null, "", null, "", null));
+        List<Emp> list = mapper.getEmpsByCondition(new Emp(null, "张三", null, "", null));
+        System.out.println(list);
+    }
+
+    @Test
+    public void testGetEmpsByChoose() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DynamicSQLMapper mapper = sqlSession.getMapper(DynamicSQLMapper.class);
+        List<Emp> list = mapper.getEmpsByChoose(new Emp(null, "", null, "", null));
         System.out.println(list);
     }
 }
