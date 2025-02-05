@@ -1,6 +1,8 @@
 package com.atguigu.mybatis.test;
 
+import com.atguigu.mybatis.mapper.DeptMapper;
 import com.atguigu.mybatis.mapper.EmpMapper;
+import com.atguigu.mybatis.pojo.Dept;
 import com.atguigu.mybatis.pojo.Emp;
 import com.atguigu.mybatis.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -28,6 +30,10 @@ public class E_ResultMapTest {
      * a> 级联属性赋值
      * b> association
      * c> 分步查询
+     *
+     * 处理一对多的映射关系
+     * a> collection
+     * b> 分步查询
      */
 
     @Test
@@ -54,5 +60,13 @@ public class E_ResultMapTest {
         System.out.println(emp.getEmpName());
         System.out.println("+++++++++++++++++++++++++++");
         System.out.println(emp.getDept());
+    }
+
+    @Test
+    public void testGetDeptAndEmps() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DeptMapper mapper = sqlSession.getMapper(DeptMapper.class);
+        Dept dept = mapper.getDeptAndEmps(1);
+        System.out.println(dept);
     }
 }
