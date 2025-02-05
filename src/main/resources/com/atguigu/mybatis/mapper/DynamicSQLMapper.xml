@@ -4,6 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.mybatis.mapper.DynamicSQLMapper">
 
+    <!-- int insertMultipleByList(List<Emp> emps); -->
+    <insert id="insertMultipleByList">
+        insert into t_emp values
+        <foreach collection="emps" item="emp" separator=",">
+            (null, #{emp.empName}, #{emp.age}, #{emp.sex}, #{emp.email}, null)
+        </foreach>
+    </insert>
+
     <!-- int deleteMultipleByArray(@Param("eids") Integer[] id); -->
     <delete id="deleteMultipleByArray">
         delete from t_emp where

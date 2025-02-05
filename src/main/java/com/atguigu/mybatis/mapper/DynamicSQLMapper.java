@@ -21,4 +21,9 @@ public interface DynamicSQLMapper {
      * 通过数组实现批量删除
      */
     int deleteMultipleByArray(@Param("eids") Integer[] eids);
+
+    /**
+     * 通过list集合实现批量添加
+     */
+    int insertMultipleByList(@Param("emps") List<Emp> emps);
 }
