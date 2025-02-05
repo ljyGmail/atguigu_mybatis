@@ -48,9 +48,15 @@
         </where>
     </select>
 
+    <sql id="empColumns">
+        eid
+        , emp_name, age, sex, email
+    </sql>
+
     <!-- List<Emp> getEmpsByCondition(Emp emp); -->
     <select id="getEmpsByCondition" resultType="Emp">
-        select *
+        select
+        <include refid="empColumns"/>
         from t_emp
         <trim prefix="where" suffixOverrides="and|or">
             <if test="empName != null and empName != ''">
