@@ -13,10 +13,10 @@
     <properties resource="jdbc.properties"/>
 
     <!-- 设置MyBatis的全局配置 -->
-    <settings>
+<!--    <settings>-->
         <!-- 将_自动映射为驼峰， emp_name -> empName -->
-        <setting name="mapUnderscoreToCamelCase" value="true"/>
-    </settings>
+        <!-- <setting name="mapUnderscoreToCamelCase" value="true"/> -->
+<!--    </settings>-->
 
     <!-- 设置类型的别名 -->
     <typeAliases>

@@ -15,6 +15,14 @@ public class E_ResultMapTest {
      * a> 为字段起别名，保持和属性名的一致
      * b> 设置全局配置，将_自动映射为驼峰
      * <setting name="mapUnderscoreToCamelCase" value="true"/>
+     * c> 通过resultMap设置自定义的映射关系
+     * <resultMap id="empResult" type="Emp">
+     * <id property="eid" column="eid"/>
+     * <result property="empName" column="emp_name"/>
+     * <result property="age" column="age"/>
+     * <result property="sex" column="sex"/>
+     * <result property="email" column="email"/>
+     * </resultMap>
      */
 
     @Test
